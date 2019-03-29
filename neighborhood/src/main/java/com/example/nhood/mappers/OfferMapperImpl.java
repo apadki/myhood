@@ -1,6 +1,5 @@
 package com.example.nhood.mappers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.nhood.domain.Offer;
 import com.example.nhood.entities.OfferEntity;
@@ -10,8 +9,8 @@ import com.example.nhood.utils.HoodUtils;
 
 public class OfferMapperImpl implements OfferMapper{
   
-  @Autowired
-  HoodUtils hoodUtils;
+   
+  HoodUtils hoodUtils = new HoodUtils();
  
   @Override
   public Offer fromEntity(OfferEntity entity) {
