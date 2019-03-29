@@ -37,5 +37,13 @@ public class OfferService {
      }
      return null;
   }
+  
+  public List<Offer> getOffersByEmail(String email){
+     
+     
+      return offerRepository.findFromUserEmail(email).stream().map(e1->offerMapper.fromEntity(e1)).collect(Collectors.toList());
+    
+    //return null;
+ }
 
 }

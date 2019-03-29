@@ -2,13 +2,15 @@ package com.example.nhood.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.nhood.domain.Offer;
+import com.example.nhood.domain.User;
 import com.example.nhood.service.OfferService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
@@ -36,10 +38,17 @@ public class OffersController {
    public String welcome() {
      return "welcome";
    }
-  
-  @RequestMapping(value = "/getOffersByUid", method = RequestMethod.GET)
-  public List<Offer> getOffers(@RequestParam String userId) {
+  @ApiOperation(value = "Retrieve offers for a user")
+  @RequestMapping(value = "/getOffersByUser/{userId}", method = RequestMethod.GET)
+  public List<Offer> getOffers(@ApiParam ("Offers pulled for UserId") @PathVariable String userId) {
     return  offerService.getOffers(userId);
+  }
+  
+  @ApiOperation(value = "Retrieve Offers for user")
+  @RequestMapping(value = "/getOffers/{email}/offers", method = RequestMethod.GET)
+  public List<Offer>  getOffersByUserEmail(@ApiParam(value="user email" , name="email" ) @PathVariable String email) {
+    System.out.println("\n\n \n ---" + email);
+    return  offerService.getOffersByEmail(email);
   }
 
 }

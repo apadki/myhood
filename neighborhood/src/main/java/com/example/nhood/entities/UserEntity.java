@@ -17,19 +17,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table (name = "user")
 @EqualsAndHashCode(callSuper=false)
-@Table (name = "offer")
-public class OfferEntity extends BaseEntity{
-	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
-	
-	@Column (name = "name", nullable=false, length =255)
-	private String name;
-	
-	@Column (name="offer_type", nullable=false, length=1)
-	private String offerType;
-	
-	@Column (name = "user_id", nullable=false )
-	private Integer userId;
+public class UserEntity extends BaseEntity{
+  @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  private Integer id;
+  
+  @Column (name = "first_name", nullable=false, length =255)
+  private String firstName;
+  
+  @Column (name = "last_name", nullable=false, length =255)
+  private String lastName;
+  
+  @Column (name = "email", nullable=false, length =20)
+  private String email;
+  
+  
 }

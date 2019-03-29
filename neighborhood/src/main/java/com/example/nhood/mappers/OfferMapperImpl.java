@@ -21,20 +21,18 @@ public class OfferMapperImpl implements OfferMapper{
     offer.setId(hoodUtils.fromInt(entity.getId()));
     offer.setName(entity.getName());
     offer.setOfferType(entity.getOfferType());
+    offer.setUserId(hoodUtils.fromInt(entity.getUserId()));
     return offer;
   }
 
   @Override
   public OfferEntity toEntity(Offer model) {
-    // TODO Auto-generated method stub
     OfferEntity entity = new OfferEntity();
     entity.setName(model.getName());
     entity.setOfferType(model.getOfferType());
     entity.setCreateDate(model.getCreateDate());
     entity.setUpdateDate(model.getUpdateDate());
-  
-    
+    entity.setUserId(model.getUserId() == null ? null : Integer.valueOf(model.getUserId()));
     return entity;
   }
-
 }
