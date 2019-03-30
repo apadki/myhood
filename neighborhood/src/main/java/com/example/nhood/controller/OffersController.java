@@ -34,10 +34,7 @@ public class OffersController {
     return offer;
   }
 
-  @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-   public String welcome() {
-     return "welcome";
-   }
+  
   @ApiOperation(value = "Retrieve offers for a user")
   @RequestMapping(value = "/getOffersByUser/{userId}", method = RequestMethod.GET)
   public List<Offer> getOffers(@ApiParam ("Offers pulled for UserId") @PathVariable String userId) {
@@ -50,5 +47,6 @@ public class OffersController {
     System.out.println("\n\n \n ---" + email);
     return  offerService.getOffersByEmail(email);
   }
-
+  
+  
 }

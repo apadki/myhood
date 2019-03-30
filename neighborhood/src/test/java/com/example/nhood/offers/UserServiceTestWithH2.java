@@ -1,5 +1,6 @@
 package com.example.nhood.offers;
 
+import static org.junit.Assert.assertEquals;
 import java.sql.Connection;
 import java.sql.SQLException;
 import org.junit.After;
@@ -52,7 +53,7 @@ public class UserServiceTestWithH2 {
     user.setEmail("FIRST@LAST.com");
     userService.saveUser(user);
     User user1 = userService.getUserByEmail("FIRST@LAST.com");
-    System.out.println(user1);
+    assertEquals(user.getFirstName(), user1.getFirstName());
     
     
   }
