@@ -26,10 +26,10 @@ public class UserServiceTestWithH2 {
   @Autowired 
   UserService userService;
   
-  private static final String CREATE_TABLE = "dbScripts/before/user.sql";
-  private static final String DROP_TABLE = "dbScripts/after/dropUser.sql";
+//  private static final String CREATE_TABLE = "dbScripts/before/user.sql";
+ // private static final String DROP_TABLE = "dbScripts/after/dropUser.sql";
 
-  @Before 
+  /*@Before 
   public void before() throws ScriptException, SQLException {
     Connection conn = jdbc.getDataSource().getConnection();
     ClassPathResource cpr = new ClassPathResource(CREATE_TABLE);
@@ -41,21 +41,28 @@ public class UserServiceTestWithH2 {
     Connection conn = jdbc.getDataSource().getConnection();
     ClassPathResource cpr = new ClassPathResource(DROP_TABLE);
     ScriptUtils.executeSqlScript(conn,cpr);
-  }
+  }*/
   
   
   @Test
   public void createUserRecord() {
     
     User user = new User();
-    user.setFirstName("FIRST");
+    user.setFirstName("FIRST11");
     user.setLastName("LAST");
     user.setEmail("FIRST@LAST.com");
     userService.saveUser(user);
     User user1 = userService.getUserByEmail("FIRST@LAST.com");
-    assertEquals(user.getFirstName(), user1.getFirstName());
+     assertEquals(user.getFirstName(), user1.getFirstName());
     
     
   }
 
+  @Test
+  public void retrieveUserByEmail() {
+    User user1 = userService.getUserByEmail("anuradha@sahar.com");
+    assertEquals(user1.getEmail(), "anuradha@sahar.com");
+    
+    
+  }
 }
