@@ -8,5 +8,7 @@ public interface UserService {
   User saveUser(User user);
 
   User getUserByEmail(String email);
+  
+  User getUserById(String id);
 
 }

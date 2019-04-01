@@ -1,5 +1,6 @@
 package com.example.nhood.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Serializable{
   
   @NotNull
   private String id;
