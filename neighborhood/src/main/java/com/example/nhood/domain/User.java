@@ -1,10 +1,12 @@
 package com.example.nhood.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.springframework.validation.annotation.Validated;
+import com.example.nhood.validators.PhoneNumberConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,25 +16,33 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable{
+@Validated
+public class User {
   
-  @NotNull
+ 
   private String id;
 
-  @NotNull
+  @NotNull (message= "First Name cannot be null")
   @Size(min =3, max =255)
+  @NotBlank (message= "First Name cannot be blank")
   private String firstName;
   
-  @NotNull
+  @NotNull (message= "Last Name cannot be null")
   @Size(min =3, max =255)
+  @NotBlank (message= "Last Name cannot be blank")
   private String lastName;
   
   @NotNull
-  @Email
+  @Email (message= "Email cannot be null")
   private String email;
   
   private Date createDate;
   
   private Date updateDate;
+  
+  private boolean working;
+  
+  @PhoneNumberConstraint (message = " Phone number must be a minimum of 9 numbers")
+  private String phoneNumebr;
 
 }

@@ -45,7 +45,7 @@ public class UserServiceTestWithH2 {
   
   
   @Test
-  public void createUserRecord() {
+  public void createUserRecord() throws Exception {
     
     User user = new User();
     user.setFirstName("FIRST11");
