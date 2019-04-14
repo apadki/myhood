@@ -11,5 +11,6 @@ public interface UserService {
   User getUserByEmail(String email);
   
   User getUserById(String id);
-
+  
+  boolean isValidUser(String id);
 }

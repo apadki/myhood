@@ -57,4 +57,14 @@ public class UserServiceImpl implements UserService {
     }
     return null;
   }
+
+  @Override
+  public boolean isValidUser(String id) {
+    if (!StringUtils.isBlank(id)) {
+      return userRepository.existsById(Integer.parseInt(id));
+    }
+    return false;
+  }
+  
+  
 }
